@@ -12,19 +12,37 @@ namespace EntityFramworkTask1.Contoller
     internal class PassportController
     {
         #region AddPassport
-        public void AddPassport()
+        public void AddPassport(PassportModelClass passport)
         {
-            var person = new PersonModelClass
-            {
-                Name = "John"
-            };
-            var passport = new PassportModelClass
-            {
-                PassportNumber = "123456",
-                ExpiryDate = DateTime.Now,
-            };
             var passportDal = new PassportDal();
-            passportDal.AddPassport(passport,person);
+            passportDal.AddPassport(passport);
+        }
+        #endregion
+
+        #region GetPassports
+        public List<PassportModelClass> GetPassports()
+        {
+            var passportDal = new PassportDal();
+            return passportDal.GetPassport();
+        }
+        #endregion                        
+
+        #region UpdatePassport
+        public void UpdatePassport(int id)
+        {
+            var passportDal = new PassportDal();
+            var passport = passportDal.GetPassport().Find( x => x.Id == id);
+            passport.PassportNumber = "111111";
+            passportDal.UpdatePassport(passport);
+        }
+        #endregion
+
+        #region DeletePassport
+        public void DeletePassport(int id)
+        {
+            var passportDal = new PassportDal();
+            var passport = passportDal.GetPassport().Find( x => x.Id == id);
+            passportDal.DeletePassport(passport);
         }
         #endregion
     }
