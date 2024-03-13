@@ -16,6 +16,10 @@ namespace EntityFramworkTask1.Model.OneToOne
         public string PassportNumber { get; set; }
         [Required]
         public DateTime ExpiryDate {  get; set; }
+
+        [Required]
+        public string Nationality { get; set; }
+
         public int PersonId { get; set; }
         public PersonModelClass Person { get; set; }
     }
